@@ -6,6 +6,8 @@ public class Admin extends Usuario {
 
     }
 
+    public Admin() {}
+
     @Override
     public String toString() {
         return super.toString();

@@ -18,6 +18,14 @@ public class Profesor extends Usuario {
 
     }
 
+    public Profesor(String nombre, String apellido, String email, String telefono, String dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.dni = dni;
+    }
+
     public String getNombre() {
         return nombre;
     }

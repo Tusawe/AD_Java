@@ -14,6 +14,12 @@ public class Alumno extends Usuario {
 
     }
 
+    public Alumno(String nombre, String apellido, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+    }
+
     public String getNombre() {
         return nombre;
     }

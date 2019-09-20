@@ -8,6 +8,8 @@ public abstract class Usuario {
         this.password = password;
     }
 
+    public Usuario() {}
+
     public String getUserName() {
         return userName;
     }
