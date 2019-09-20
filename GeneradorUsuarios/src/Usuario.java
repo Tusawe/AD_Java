@@ -1,21 +1,11 @@
 public abstract class Usuario {
 
-    private String id;
     private String userName;
     private String password;
 
-    public Usuario(String id, String userName, String password) {
-        this.id = id;
+    public Usuario(String userName, String password) {
         this.userName = userName;
         this.password = password;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getUserName() {
@@ -37,7 +27,6 @@ public abstract class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "id='" + id + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';

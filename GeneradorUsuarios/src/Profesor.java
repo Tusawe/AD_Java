@@ -6,10 +6,10 @@ public class Profesor extends Usuario {
     private String telefono;
     private String dni;
 
-    public Profesor(String id, String userName, String password, String nombre,
+    public Profesor(String userName, String password, String nombre,
                     String apellido, String email, String telefono, String dni) {
 
-        super(id, userName, password);
+        super(userName, password);
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;

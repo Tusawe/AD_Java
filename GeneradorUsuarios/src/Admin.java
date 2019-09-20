@@ -1,8 +1,8 @@
 public class Admin extends Usuario {
 
-    public Admin(String id, String userName, String password) {
+    public Admin(String userName, String password) {
 
-        super(id, userName, password);
+        super(userName, password);
 
     }
 

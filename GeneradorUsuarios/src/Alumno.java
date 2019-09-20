@@ -4,10 +4,10 @@ public class Alumno extends Usuario {
     private String apellido;
     private String email;
 
-    public Alumno(String id, String userName, String password, String nombre,
+    public Alumno(String userName, String password, String nombre,
                   String apellido, String email) {
 
-        super(id, userName, password);
+        super(userName, password);
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
