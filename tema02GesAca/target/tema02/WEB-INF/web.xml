@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" 
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+   <display-name>Gestión Académica</display-name>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+
+<context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:Beans.xml</param-value>
+</context-param>
+
+    <servlet>
+        <servlet-name>AlumnoCreate</servlet-name>
+        <servlet-class>com.iesvdc.acceso.controlador.AlumnoCreate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlumnoRead</servlet-name>
+        <servlet-class>com.iesvdc.acceso.controlador.AlumnoRead</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlumnoDelete</servlet-name>
+        <servlet-class>com.iesvdc.acceso.controlador.AlumnoDelete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlumnoUpdate</servlet-name>
+        <servlet-class>com.iesvdc.acceso.controlador.AlumnoUpdate</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AlumnoCreate</servlet-name>
+        <url-pattern>/AlumnoCreate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoRead</servlet-name>
+        <url-pattern>/AlumnoRead</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoDelete</servlet-name>
+        <url-pattern>/AlumnoDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoUpdate</servlet-name>
+        <url-pattern>/AlumnoUpdate</url-pattern>
+    </servlet-mapping>
+
+
+     <filter>
+        <filter-name>AlumnoFilter</filter-name>
+        <filter-class>com.iesvdc.acceso.controlador.filters.AuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AlumnoFilter</filter-name>
+        <url-pattern>/AlumnoRead</url-pattern>
+    </filter-mapping>
+
+
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+
+    <resource-ref>
+        <description>DataBase Connection</description>
+        <res-ref-name>jdbc/gestionAcademica</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+       </resource-ref>
+
+    
+    <servlet>
+        <servlet-name>jersey-servlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.iesvdc.acceso.controlador.resources</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jersey-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
