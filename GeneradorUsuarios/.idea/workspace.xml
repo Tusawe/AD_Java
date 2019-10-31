@@ -24,7 +24,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$USER_HOME$/D_Interfaces/Kotlin/EjerciciosInicio" />
+=======
     <property name="last_opened_file_path" value="$USER_HOME$/D_Interfaces/Ejercicios/Kotlin/EjerciciosInicio" />
+>>>>>>> 03b41ac9dd4362bb56c6fa179f09ada56ac0ad1f
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
