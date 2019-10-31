@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/gestionReservas" global="jdbc/gestionReservas" 
+              url="jdbc:mysql://localhost:33306/gestion_reservas"
+              auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="root" password="example" driverClassName="com.mysql.jdbc.Driver"
+    />
+    <Resource name="jdbc/gestionAcademica" 
+              username="root" password="example" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:33306/gestion_academica"
+              auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+    />
+</Context>
