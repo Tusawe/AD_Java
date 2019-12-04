@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - UnMarshalling",
+            "request": "launch",
+            "mainClass": "app.UnMarshalling",
+            "projectName": "bibliotecamarshalling"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Marshalling",
+            "request": "launch",
+            "mainClass": "app.Marshalling",
+            "projectName": "bibliotecamarshalling"
+        }
+    ]
+}

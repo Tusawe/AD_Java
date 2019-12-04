@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<biblioteca>
+    <usuarios>
+        <alumnos id="1652">
+            <username>FJBVIO</username>
+            <password>password1</password>
+            <nombre>Marta</nombre>
+            <apellidos>Jimenez</apellidos>
+            <email>mjimenez@hotmail.com</email>
+            <sexo>M</sexo>
+        </alumnos>
+        <alumnos id="2929">
+            <username>fb32fbf</username>
+            <password>password2</password>
+            <nombre>Juan</nombre>
+            <apellidos>Lopez</apellidos>
+            <email>jlopez@gmail.com</email>
+            <sexo>H</sexo>
+        </alumnos>
+        <alumnos id="33542">
+            <username>passss</username>
+            <password>password2</password>
+            <nombre>jose Luis</nombre>
+            <apellidos>Gomez Lopez</apellidos>
+            <email>jlgomezlopez@yahoo.es</email>
+            <sexo>H</sexo>
+        </alumnos>
+        <profesores dni="02342342f" id="23188989P">
+            <username>prof</username>
+            <password>pass1</password>
+            <nombre>Juan Gualberto</nombre>
+            <apellidos>Gutierrez Marin</apellidos>
+            <email>jggm@iesvirgendelcarmen.com</email>
+            <telefono>33451298324</telefono>
+        </profesores>
+        <admins id="Admin1">
+            <username>Admin1</username>
+            <password>****1****</password>
+        </admins>
+        <admins id="Admin2">
+            <username>Admin2</username>
+            <password>****2****</password>
+        </admins>
+    </usuarios>
+    <libros>
+        <libro id="134123">
+            <isbn>isbn10</isbn>
+            <paginas>23</paginas>
+            <editorial>anaya</editorial>
+            <titulo>Lo que el viento se llevó</titulo>
+            <anioPublicacion>1999</anioPublicacion>
+        </libro>
+        <libro id="34348">
+            <isbn>isbn12</isbn>
+            <paginas>32</paginas>
+            <editorial>planet</editorial>
+            <titulo>Yo, julia</titulo>
+            <anioPublicacion>2007</anioPublicacion>
+        </libro>
+        <libro id="98394">
+            <isbn>isbn10</isbn>
+            <paginas>55</paginas>
+            <editorial>libroRR</editorial>
+            <titulo>Un mar violeta oscuro</titulo>
+            <anioPublicacion>2003</anioPublicacion>
+        </libro>
+        <libro id="77373">
+            <isbn>isbn13</isbn>
+            <paginas>100</paginas>
+            <editorial>Coral</editorial>
+            <titulo>La casa alemana</titulo>
+            <anioPublicacion>1989</anioPublicacion>
+        </libro>
+    </libros>
+    <prestamos>
+        <prestamo>
+            <fecha_prestamo>12/03/2002</fecha_prestamo>
+            <fecha_devolucion>10/04/2002</fecha_devolucion>
+            <porroga>prorroga1</porroga>
+            <ejemplar>ejemp1</ejemplar>
+            <estado>nuevo</estado>
+            <usuario id="Tusawe">
+                <username>Paco</username>
+                <password>FFog15</password>
+            </usuario>
+        </prestamo>
+        <prestamo>
+            <fecha_prestamo>03/07/2003</fecha_prestamo>
+            <fecha_devolucion>10/07/2003</fecha_devolucion>
+            <porroga>prorroga2</porroga>
+            <ejemplar>ejemp1powijef</ejemplar>
+            <estado>deteriorado</estado>
+            <usuario id="Tusawe">
+                <username>Paco</username>
+                <password>FFog15</password>
+            </usuario>
+        </prestamo>
+    </prestamos>
+</biblioteca>

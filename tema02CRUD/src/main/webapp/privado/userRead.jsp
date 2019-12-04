@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<sql:query var="userList" dataSource="jdbc/gestionReservas">
+<sql:query var="userList" dataSource="jdbc/biblioteca">
     select username, email, password from usuario;
 </sql:query>
 

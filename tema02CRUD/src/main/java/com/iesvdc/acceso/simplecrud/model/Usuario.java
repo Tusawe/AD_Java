@@ -6,22 +6,44 @@ public class Usuario {
     String email;
     String password;
     Integer id;
+    String nombre;
+    String apellido;
+    String telefono;
+    String dni;
+    String tipo;
     
     Usuario() {
 
     }
 
-    Usuario(String username, String email, String password){
+    Usuario(String username, String password, String tipo){
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.tipo = tipo;
     }
 
-    Usuario(Integer id, String username, String email, String password){
-        this.id = id;
+    Usuario(String username, String email, String password, Integer id, String nombre, String apellido,
+            String tipo) {
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipo = tipo;
+    }
+
+    Usuario(String username, String email, String password, Integer id, String nombre, String apellido,
+            String telefono, String dni, String tipo) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.dni = dni;
+        this.tipo = tipo;
     }
 
 
@@ -57,5 +79,44 @@ public class Usuario {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
 }
