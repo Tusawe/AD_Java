@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import com.iesvdc.acceso.simplecrud.model.Usuario;
 import com.iesvdc.acceso.simplecrud.model.Conexion;
+import com.iesvdc.acceso.simplecrud.model.Libro;
 
 public class LibroManagement extends HttpServlet {
 
@@ -165,25 +166,23 @@ public class LibroManagement extends HttpServlet {
             HttpServletResponse resp) // respuesta que genero
             throws ServletException, IOException {
 
-        Usuario user = new Gson().fromJson(req.getReader(), Usuario.class);
+        Libro libro = new Gson().fromJson(req.getReader(), Libro.class);
 
         try {
-            String sql = "UPDATE usuario SET username=?, password=?, dni=?, nombre=?, apellido=?, email=?, telefono=?, tipo=? WHERE id=?";
+            String sql = "UPDATE libro SET isbn10=?, isbn13=?, titulo=?, editorial=?, fechaPublicacion=?, nPaginas=? WHERE id=?";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getPassword());
-            pstm.setString(3, user.getDni());
-            pstm.setString(4, user.getNombre());
-            pstm.setString(5, user.getApellido());
-            pstm.setString(6, user.getEmail());
-            pstm.setString(7, user.getTelefono());
-            pstm.setString(8, user.getTipo());
-            pstm.setInt(9, user.getId());
+            pstm.setString(1, libro.getIsbn10());
+            pstm.setString(2, libro.getIsbn13());
+            pstm.setString(3, libro.getTitulo());
+            pstm.setString(4, libro.getEditorial());
+            pstm.setString(5, libro.getFechaPublicacion());
+            pstm.setInt(6, libro.getnPaginas());
+            pstm.setInt(7, libro.getId());
 
             if (pstm.executeUpdate() > 0) {
-                resp.getWriter().println("Usuario insertado");
+                resp.getWriter().println("Libro insertado");
             } else {
                 resp.getWriter().println("No se ha podido insertar");
             }

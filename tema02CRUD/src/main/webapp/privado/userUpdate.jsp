@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<sql:query var="userList" dataSource="jdbc/gestionReservas">
-    select id, username, email, password from usuario;
+<sql:query var="userList" dataSource="jdbc/biblioteca">
+    select id, username, tipo, password from usuario;
 </sql:query>
 
 
@@ -16,7 +16,7 @@
                     <option value="${usuario.id}"/> 
                         <c:out value="${usuario.username}" />
                         / 
-                        <c:out value="${usuario.email}" />
+                        <c:out value="${usuario.tipo}" />
                     </option>
                 </c:forEach>
             </select>
@@ -26,10 +26,15 @@
 
     <div id="paso2" align="center" hidden>
         <div class="form">
-            ID: <input id="userid" type="text" disabled /> <br/>
-            Username: <input id="username" type="text" placeholder="Nombre de usuario" /> <br/>
-            Password: <input id="password" type="text" placeholder="Contraseña" /><br/>
-            Email: <input id="email" type="email" placeholder="email" /><br/>
+            <input id="userid" type="text" disabled /> <br/>
+            <input id="username" type="text" placeholder="Nombre de usuario" /> <br/>
+            <input id="password" type="text" placeholder="Contraseña" /><br/>
+            <input id="dni" type="text" placeholder="DNI" /><br>
+            <input id="nombre" type="text" placeholder="Nombre" /><br>
+            <input id="apellido" type="text" placeholder="Apellido" /><br>
+            <input id="email" type="email" placeholder="Correo electrónico" /><br>
+            <input id="telefono" type="text" placeholder="Teléfono" /><br>
+            <input id="tipo" type="text" placeholder="Tipo" /><br>
             <button onclick="enviar()">Enviar</button>
         </div>
     </div>
