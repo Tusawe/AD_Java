@@ -21,7 +21,7 @@ public class UserManagement extends HttpServlet {
 
     // private static final String JDBC_MYSQL_GESTION_RESERVAS =
     // "jdbc:mysql://192.168.99.101:33306/gestion_reservas";
-    private static final String JDBC_MYSQL_BIBLIOTECA = "jdbc:mysql://localhost:33306/biblioteca";
+    private static final String JDBC_MYSQL_GESTION_RESERVAS = "jdbc:mysql://localhost:33306/gestion_reservas";
 
     private Conexion conn;
     private Connection conexion;
@@ -63,16 +63,9 @@ public class UserManagement extends HttpServlet {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
                 String email = rs.getString("email");
-                String dni = rs.getString("dni");
-                String telefono = rs.getString("telefono");
-                String tipo = rs.getString("tipo");
-                String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
+                // String id = rs.getString("id");
                 jsonObject = "{" + "\n" + "'id':'" + id + "'," + "\n" + "'username':'" + username + "'," + "\n"
-                        + "'password':'" + password + "'," + "\n" + "'email':'" + email + "'" + "\n"
-                        + "'dni':'" + dni + "'" + "\n" + "'telefono':'" + telefono + "'" + "\n"
-                        + "'tipo':'" + tipo + "'" + "\n" + "'nombre':'" + nombre + "'" + "\n"
-                        + "'apellido':'" + apellido + "'" + "\n" + "}";
+                        + "'password':'" + password + "'," + "\n" + "'email':'" + email + "'" + "\n" + "}";
 
             }
         } catch (Exception ex) {
@@ -91,25 +84,15 @@ public class UserManagement extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
-        String dni = req.getParameter("dni");
-        String telefono = req.getParameter("telefono");
-        String tipo = req.getParameter("tipo");
-        String nombre = req.getParameter("nombre");
-        String apellido = req.getParameter("apellido");
 
         try {
-            String sql = "INSERT INTO usuario (username,password,dni,nombre,apellido,email,telefono,tipo) VALUES(?,?,?.?,?,?,?,?)";
+            String sql = "INSERT INTO usuario (username,password,email) VALUES(?,?,?)";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
             pstm.setString(1, username);
             pstm.setString(2, password);
-            pstm.setString(6, email);
-            pstm.setString(3, dni);
-            pstm.setString(7, telefono);
-            pstm.setString(8, tipo);
-            pstm.setString(4, nombre);
-            pstm.setString(5, apellido);
+            pstm.setString(3, email);
 
             if (pstm.executeUpdate() > 0) {
                 resp.getWriter().println("Usuario insertado");
@@ -174,19 +157,14 @@ public class UserManagement extends HttpServlet {
         Usuario user = new Gson().fromJson(req.getReader(), Usuario.class);
 
         try {
-            String sql = "UPDATE usuario SET username=?, password=?, dni=?, nombre=?, apellido=?, email=?, telefono=?, tipo=? WHERE id=?";
+            String sql = "UPDATE usuario SET username=?, password=?, email=? WHERE id=?";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
             pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getPassword());
-            pstm.setString(3, user.getDni());
-            pstm.setString(4, user.getNombre());
-            pstm.setString(5, user.getApellido());
-            pstm.setString(6, user.getEmail());
-            pstm.setString(7, user.getTelefono());
-            pstm.setString(8, user.getTipo());
-            pstm.setInt(9, user.getId());
+            pstm.setString(3, user.getEmail());
+            pstm.setInt(4, user.getId());
 
             if (pstm.executeUpdate() > 0) {
                 resp.getWriter().println("Usuario insertado");

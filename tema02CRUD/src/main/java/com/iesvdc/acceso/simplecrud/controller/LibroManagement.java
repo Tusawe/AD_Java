@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 import com.iesvdc.acceso.simplecrud.model.Usuario;
 import com.iesvdc.acceso.simplecrud.model.Conexion;
 
-public class UserManagement extends HttpServlet {
+public class LibroManagement extends HttpServlet {
 
     // private static final String JDBC_MYSQL_GESTION_RESERVAS =
     // "jdbc:mysql://192.168.99.101:33306/gestion_reservas";
@@ -43,7 +43,7 @@ public class UserManagement extends HttpServlet {
         // buscamos en la base de datos el objeto y devolvemos sus datos
 
         String id = req.getRequestURI().substring(req.getContextPath().length());
-        id = id.replace("/user/", "");
+        id = id.replace("/libro/", "");
         jsonObject = "{salida: '" + id + "'}";
 
         // String id = req.getParameter("userid");
@@ -51,7 +51,7 @@ public class UserManagement extends HttpServlet {
         
         try {
         
-            String sql = "SELECT * FROM usuario WHERE id=?";
+            String sql = "SELECT * FROM libro WHERE id=?";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
@@ -60,19 +60,17 @@ public class UserManagement extends HttpServlet {
             ResultSet rs = pstm.executeQuery();
 
             if (rs.next()) {
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                String email = rs.getString("email");
-                String dni = rs.getString("dni");
-                String telefono = rs.getString("telefono");
-                String tipo = rs.getString("tipo");
-                String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
-                jsonObject = "{" + "\n" + "'id':'" + id + "'," + "\n" + "'username':'" + username + "'," + "\n"
-                        + "'password':'" + password + "'," + "\n" + "'email':'" + email + "'" + "\n"
-                        + "'dni':'" + dni + "'" + "\n" + "'telefono':'" + telefono + "'" + "\n"
-                        + "'tipo':'" + tipo + "'" + "\n" + "'nombre':'" + nombre + "'" + "\n"
-                        + "'apellido':'" + apellido + "'" + "\n" + "}";
+                String isbn10 = rs.getString("isbn10");
+                String isbn13 = rs.getString("isbn13");
+                String titulo = rs.getString("titulo");
+                String editorial = rs.getString("editorial");
+                String fechaPublicacion = rs.getString("fechaPublicacion");
+                String nPaginas = rs.getString("nPaginas");
+                
+                jsonObject = "{" + "\n" + "'id':'" + id + "'," + "\n" + "'isbn10':'" + isbn10 + "'," + "\n"
+                        + "'isbn13':'" + isbn13 + "'," + "\n" + "'titulo':'" + titulo + "'" + "\n"
+                        + "'editorial':'" + editorial + "'" + "\n" + "'fechaPublicacion':'" + fechaPublicacion + "'" + "\n"
+                        + "'nPaginas':'" + nPaginas + "'" + "}";
 
             }
         } catch (Exception ex) {
@@ -88,31 +86,27 @@ public class UserManagement extends HttpServlet {
             HttpServletResponse resp) // respuesta que genero
             throws ServletException, IOException {
 
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        String email = req.getParameter("email");
-        String dni = req.getParameter("dni");
-        String telefono = req.getParameter("telefono");
-        String tipo = req.getParameter("tipo");
-        String nombre = req.getParameter("nombre");
-        String apellido = req.getParameter("apellido");
+        String isbn10 = req.getParameter("isbn10");
+        String isbn13 = req.getParameter("isbn13");
+        String titulo = req.getParameter("titulo");
+        String editorial = req.getParameter("editorial");
+        String fechaPublicacion = req.getParameter("fechaPublicacion");
+        String nPaginas = req.getParameter("nPaginas");
 
         try {
-            String sql = "INSERT INTO usuario (username,password,dni,nombre,apellido,email,telefono,tipo) VALUES(?,?,?.?,?,?,?,?)";
+            String sql = "INSERT INTO libro (isbn10,isbn13,titulo,editorial,fechaPublicacion,nPaginas) VALUES(?.?,?,?,?,?)";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
-            pstm.setString(1, username);
-            pstm.setString(2, password);
-            pstm.setString(6, email);
-            pstm.setString(3, dni);
-            pstm.setString(7, telefono);
-            pstm.setString(8, tipo);
-            pstm.setString(4, nombre);
-            pstm.setString(5, apellido);
+            pstm.setString(1, isbn10);
+            pstm.setString(2, isbn13);
+            pstm.setString(3, titulo);
+            pstm.setString(4, editorial);
+            pstm.setString(5, fechaPublicacion);
+            pstm.setString(6, nPaginas);
 
             if (pstm.executeUpdate() > 0) {
-                resp.getWriter().println("Usuario insertado");
+                resp.getWriter().println("Libro insertado");
             } else {
                 resp.getWriter().println("No se ha podido insertar");
             }
@@ -139,7 +133,7 @@ public class UserManagement extends HttpServlet {
         // buscamos en la base de datos el objeto y devolvemos sus datos
 
         String id = req.getRequestURI().substring(req.getContextPath().length());
-        id = id.replace("/user/", "");
+        id = id.replace("/libro/", "");
         jsonObject = "{'error': '" + id + "'}";
 
         // String id = req.getParameter("userid");
