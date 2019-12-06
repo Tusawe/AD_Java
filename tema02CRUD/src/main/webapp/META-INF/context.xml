@@ -4,10 +4,10 @@
               url="jdbc:mysql://localhost:33306/biblioteca"
               auth="Container" type="javax.sql.DataSource"
               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-              username="root" password="example" driverClassName="com.mysql.jdbc.Driver"
+              username="root" password="example" driverClassName="com.mysql.cj.jdbc.Driver"
     />
     <Resource name="jdbc/biblioteca" 
-              username="root" password="example" driverClassName="com.mysql.jdbc.Driver"
+              username="root" password="example" driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:33306/biblioteca"
               auth="Container" type="javax.sql.DataSource"
               maxTotal="100" maxIdle="30" maxWaitMillis="10000"

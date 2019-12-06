@@ -3,6 +3,7 @@ package com.iesvdc.acceso.simplecrud.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,11 +69,17 @@ public class UserManagement extends HttpServlet {
                 String tipo = rs.getString("tipo");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
-                jsonObject = "{" + "\n" + "'id':'" + id + "'," + "\n" + "'username':'" + username + "'," + "\n"
-                        + "'password':'" + password + "'," + "\n" + "'email':'" + email + "'" + "\n"
-                        + "'dni':'" + dni + "'" + "\n" + "'telefono':'" + telefono + "'" + "\n"
-                        + "'tipo':'" + tipo + "'" + "\n" + "'nombre':'" + nombre + "'" + "\n"
-                        + "'apellido':'" + apellido + "'" + "\n" + "}";
+                jsonObject = "{" + "\n" 
+                        + "'id':'" + id + "'," + "\n" 
+                        + "'username':'" + username + "'," + "\n"
+                        + "'password':'" + password + "'," + "\n" 
+                        + "'email':'" + email + "'," + "\n"
+                        + "'dni':'" + dni + "'," + "\n"
+                        + "'telefono':'" + telefono + "'," + "\n"
+                        + "'tipo':'" + tipo + "'," + "\n"
+                        + "'nombre':'" + nombre + "'," + "\n"
+                        + "'apellido':'" + apellido + "'" + "\n"
+                        + "}";
 
             }
         } catch (Exception ex) {
@@ -98,18 +105,18 @@ public class UserManagement extends HttpServlet {
         String apellido = req.getParameter("apellido");
 
         try {
-            String sql = "INSERT INTO usuario (username,password,dni,nombre,apellido,email,telefono,tipo) VALUES(?,?,?.?,?,?,?,?)";
+            String sql = "INSERT INTO usuario (username,password,dni,nombre,apellido,email,telefono,tipo) VALUES(?,?,?,?,?,?,?,?)";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
             pstm.setString(1, username);
             pstm.setString(2, password);
-            pstm.setString(6, email);
             pstm.setString(3, dni);
-            pstm.setString(7, telefono);
-            pstm.setString(8, tipo);
             pstm.setString(4, nombre);
             pstm.setString(5, apellido);
+            pstm.setString(6, email);
+            pstm.setString(7, telefono);
+            pstm.setString(8, tipo);            
 
             if (pstm.executeUpdate() > 0) {
                 resp.getWriter().println("Usuario insertado");
@@ -172,21 +179,13 @@ public class UserManagement extends HttpServlet {
             throws ServletException, IOException {
 
         Usuario user = new Gson().fromJson(req.getReader(), Usuario.class);
-
         try {
-            String sql = "UPDATE usuario SET username=?, password=?, dni=?, nombre=?, apellido=?, email=?, telefono=?, tipo=? WHERE id=?";
-
+            String sql = "UPDATE usuario SET username=?, email=? WHERE id=?";
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
             pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getPassword());
-            pstm.setString(3, user.getDni());
-            pstm.setString(4, user.getNombre());
-            pstm.setString(5, user.getApellido());
-            pstm.setString(6, user.getEmail());
-            pstm.setString(7, user.getTelefono());
-            pstm.setString(8, user.getTipo());
-            pstm.setInt(9, user.getId());
+            pstm.setString(2, user.getEmail());
+            pstm.setInt(3, user.getId());
 
             if (pstm.executeUpdate() > 0) {
                 resp.getWriter().println("Usuario insertado");

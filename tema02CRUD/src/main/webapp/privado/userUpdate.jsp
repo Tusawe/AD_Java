@@ -3,9 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <sql:query var="userList" dataSource="jdbc/biblioteca">
-    select id, username, tipo, password from usuario;
+    select id, username, password, email from usuario;
 </sql:query>
-
 
 <%@ include file="../header.jsp" %>
     <div id="paso1" align="center">
@@ -13,10 +12,10 @@
             <caption><h2>Seleccione el usuario que desea actualizar</h2></caption>
             <select id="userId">
                 <c:forEach var="usuario" items="${userList.rows}">
-                    <option value="${usuario.id}"/> 
+                    <option value="${usuario.id}"> 
                         <c:out value="${usuario.username}" />
                         / 
-                        <c:out value="${usuario.tipo}" />
+                        <c:out value="${usuario.email}" />
                     </option>
                 </c:forEach>
             </select>
@@ -26,15 +25,9 @@
 
     <div id="paso2" align="center" hidden>
         <div class="form">
-            <input id="userid" type="text" disabled /> <br/>
+            <input id="userid" type="number" disabled /> <br/>
             <input id="username" type="text" placeholder="Nombre de usuario" /> <br/>
-            <input id="password" type="text" placeholder="Contraseña" /><br/>
-            <input id="dni" type="text" placeholder="DNI" /><br>
-            <input id="nombre" type="text" placeholder="Nombre" /><br>
-            <input id="apellido" type="text" placeholder="Apellido" /><br>
-            <input id="email" type="email" placeholder="Correo electrónico" /><br>
-            <input id="telefono" type="text" placeholder="Teléfono" /><br>
-            <input id="tipo" type="text" placeholder="Tipo" /><br>
+            <input id="email" type="email" placeholder="email" /> <br/>
             <button onclick="enviar()">Enviar</button>
         </div>
     </div>
@@ -75,12 +68,12 @@ function recargar(){
 
 
 function enviar(){
-    var url = 'http://localhost:9090/user/'+$("#userid").val();
+    var url = 'http://localhost:9090/user/'+$("#userId").val();
     var datos = {};
     datos.username = $("#username").val();
     datos.password = $("#password").val();
     datos.email = $("#email").val();
-    datos.id = $("#userid").val();
+    datos.id = $("#userId").val();
 
     $.ajax({
         type : 'PUT',

@@ -46,7 +46,7 @@ function enviar(){
         // data : JSON.stringify({name: userName, email: userEmail}),
         success : function(data, status, xhr){
             // window.location.replace("http://localhost:8080/users/"+userId);
-            window.location.replace(".");
+            window.location.replace("..");
         },
         error: function(xhr, status, error){
         $('#msg').html('<span style=\'color:red;\'>'+error+'</span>')
