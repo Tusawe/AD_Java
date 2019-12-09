@@ -81,7 +81,7 @@ function enviar(){
         contentType: 'application/json',
         data : JSON.stringify(datos),
         success : function(data, status, xhr){
-            window.location.replace("..")            
+            window.location.replace("..");            
         },
         error: function(xhr, status, error){
             $('#msg').html('<span style=\'color:red;\'>'+error+'</span>');
