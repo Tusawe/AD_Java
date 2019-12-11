@@ -199,7 +199,7 @@ public class UserManagement extends HttpServlet {
             // resp.getWriter().println("Imposible conectar a la BBDD");
         }
 
-        resp.sendRedirect(".");
+        resp.sendRedirect("..");
 
     }
 

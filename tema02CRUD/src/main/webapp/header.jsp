@@ -23,7 +23,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Gestión de Reservas</a>
+                        <a class="navbar-brand" href="/">Biblioteca</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -38,12 +38,30 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Instalaciones <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Libros <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/privado/instalacionRead.jsp">Listar</a></li>
-                                    <li><a href="/privado/instalacionCreate.jsp">Alta</a></li>
-                                    <li><a href="/privado/instalacionUpdate.jsp">Modificación</a></li>
-                                    <li><a href="/privado/instalacionDelete.jsp">Borrado</a></li>
+                                    <li><a href="/privado/libroRead.jsp">Listar</a></li>
+                                    <li><a href="/privado/libroCreate.jsp">Alta</a></li>
+                                    <li><a href="/privado/libroUpdate.jsp">Modificación</a></li>
+                                    <li><a href="/privado/libroDelete.jsp">Borrado</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Prestamos <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/privado/prestamoRead.jsp">Listar</a></li>
+                                    <li><a href="/privado/prestamoCreate.jsp">Alta</a></li>
+                                    <li><a href="/privado/prestamoUpdate.jsp">Modificación</a></li>
+                                    <li><a href="/privado/prestamoDelete.jsp">Borrado</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Resenias <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/privado/reseniaRead.jsp">Listar</a></li>
+                                    <li><a href="/privado/reseniaCreate.jsp">Alta</a></li>
+                                    <li><a href="/privado/reseniaUpdate.jsp">Modificación</a></li>
+                                    <li><a href="/privado/reseniaDelete.jsp">Borrado</a></li>
                                 </ul>
                             </li>
                         </ul>

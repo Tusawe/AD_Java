@@ -23,6 +23,24 @@
         <url-pattern>/libro</url-pattern>
         <url-pattern>/libro/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PrestamoManagement</servlet-name>
+        <servlet-class>com.iesvdc.acceso.simplecrud.controller.PrestamoManagement</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PrestamoManagement</servlet-name>
+        <url-pattern>/prestamo</url-pattern>
+        <url-pattern>/prestamo/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReseniaManagement</servlet-name>
+        <servlet-class>com.iesvdc.acceso.simplecrud.controller.ReseniaManagement</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReseniaManagement</servlet-name>
+        <url-pattern>/resenia</url-pattern>
+        <url-pattern>/resenia/*</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>UserFilter</filter-name>
         <filter-class>com.iesvdc.acceso.simplecrud.controller.AuthenticationFilter</filter-class>

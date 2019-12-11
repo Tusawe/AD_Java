@@ -1,19 +1,21 @@
 package com.iesvdc.acceso.simplecrud.model;
 
+import java.util.Date;
+
 public class Prestamo {
 
     Integer id;
     Integer id_libro;
     Integer id_usuario;
-    String fechaInicio;
-    String fechaEntrega;
+    Date fechaInicio;
+    Date fechaEntrega;
     Integer prorroga;
     String estado;
 
     public Prestamo() {
     }
 
-    public Prestamo(Integer id, Integer id_libro, Integer id_usuario, String fechaInicio, String fechaEntrega,
+    public Prestamo(Integer id, Integer id_libro, Integer id_usuario, Date fechaInicio, Date fechaEntrega,
             Integer prorroga, String estado) {
         this.id = id;
         this.id_libro = id_libro;
@@ -48,19 +50,19 @@ public class Prestamo {
         this.id_usuario = id_usuario;
     }
 
-    public String getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaEntrega() {
+    public Date getFechaEntrega() {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(String fechaEntrega) {
+    public void setFechaEntrega(Date fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 

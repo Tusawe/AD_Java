@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +18,9 @@ import com.google.gson.Gson;
 
 import com.iesvdc.acceso.simplecrud.model.Usuario;
 import com.iesvdc.acceso.simplecrud.model.Conexion;
-import com.iesvdc.acceso.simplecrud.model.Libro;
+import com.iesvdc.acceso.simplecrud.model.Resenia;
 
-public class LibroManagement extends HttpServlet {
+public class ReseniaManagement extends HttpServlet {
 
     // private static final String JDBC_MYSQL_GESTION_RESERVAS =
     // "jdbc:mysql://192.168.99.101:33306/gestion_reservas";
@@ -45,7 +46,7 @@ public class LibroManagement extends HttpServlet {
         // buscamos en la base de datos el objeto y devolvemos sus datos
 
         String id = req.getRequestURI().substring(req.getContextPath().length());
-        id = id.replace("/libro/", "");
+        id = id.replace("/resenia/", "");
         jsonObject = "{salida: '" + id + "'}";
 
         // String id = req.getParameter("userid");
@@ -53,7 +54,7 @@ public class LibroManagement extends HttpServlet {
         
         try {
         
-            String sql = "SELECT * FROM libro WHERE id=?";
+            String sql = "SELECT * FROM resenia WHERE id=?";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
@@ -62,20 +63,16 @@ public class LibroManagement extends HttpServlet {
             ResultSet rs = pstm.executeQuery();
 
             if (rs.next()) {
-                String isbn10 = rs.getString("isbn10");
-                String isbn13 = rs.getString("isbn13");
-                String titulo = rs.getString("titulo");
-                String editorial = rs.getString("editorial");
-                String fechaPublicacion = rs.getString("fechaPublicacion");
-                int nPaginas = rs.getInt("nPaginas");
+                int id_prestamo = rs.getInt("id_prestamo");
+                String comentario = rs.getString("comentario");
+                Date fecha = rs.getDate("fecha");
+                int estrellas = rs.getInt("estrellas");
                 jsonObject = "{" + "\n" 
                         + "'id':'" + id + "'," + "\n" 
-                        + "'isbn10':'" + isbn10 + "'," + "\n"
-                        + "'isbn13':'" + isbn13 + "'," + "\n" 
-                        + "'titulo':'" + titulo + "'," + "\n"
-                        + "'editorial':'" + editorial + "'," + "\n"
-                        + "'fechaPublicacion':'" + fechaPublicacion + "'," + "\n"
-                        + "'nPaginas':'" + nPaginas + "'" + "\n"
+                        + "'id_prestamo':'" + id_prestamo + "'," + "\n"
+                        + "'comentario':'" + comentario + "'," + "\n" 
+                        + "'fecha':'" + fecha + "'," + "\n"
+                        + "'estrellas':'" + estrellas + "'" + "\n"
                         + "}";
 
             }
@@ -92,27 +89,23 @@ public class LibroManagement extends HttpServlet {
             HttpServletResponse resp) // respuesta que genero
             throws ServletException, IOException {
 
-        String isbn10 = req.getParameter("isbn10");
-        String isbn13 = req.getParameter("isbn13");
-        String titulo = req.getParameter("titulo");
-        String editorial = req.getParameter("editorial");
-        String fechaPublicacion = req.getParameter("fechaPublicacion");
-        int nPaginas = Integer.parseInt(req.getParameter("nPaginas"));
+        String id_prestamo = req.getParameter("id_prestamo");
+        String comentario = req.getParameter("comentario");
+        String fecha = req.getParameter("fecha");
+        String estrellas = req.getParameter("estrellas");
 
         try {
-            String sql = "INSERT INTO libro (isbn10,isbn13,titulo,editorial,fechaPublicacion,nPaginas) VALUES(?,?,?,?,?,?)";
+            String sql = "INSERT INTO resenia (id_prestamo,comentario,fecha,estrellas) VALUES(?,?,?,?)";
 
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
-            pstm.setString(1, isbn10);
-            pstm.setString(2, isbn13);
-            pstm.setString(3, titulo);
-            pstm.setString(4, editorial);
-            pstm.setString(5, fechaPublicacion);
-            pstm.setInt(6, nPaginas);           
+            pstm.setString(1, id_prestamo);
+            pstm.setString(2, comentario);
+            pstm.setString(3, fecha);
+            pstm.setString(4, estrellas);           
 
             if (pstm.executeUpdate() > 0) {
-                resp.getWriter().println("Libro insertado");
+                resp.getWriter().println("Resenia insertado");
             } else {
                 resp.getWriter().println("No se ha podido insertar");
             }
@@ -139,7 +132,7 @@ public class LibroManagement extends HttpServlet {
         // buscamos en la base de datos el objeto y devolvemos sus datos
 
         String id = req.getRequestURI().substring(req.getContextPath().length());
-        id = id.replace("/libro/", "");
+        id = id.replace("/resenia/", "");
         jsonObject = "{'error': '" + id + "'}";
 
         // String id = req.getParameter("userid");
@@ -147,7 +140,7 @@ public class LibroManagement extends HttpServlet {
         PreparedStatement pstm;
 
         try {
-            String sql = "DELETE FROM libro WHERE id=?";
+            String sql = "DELETE FROM resenia WHERE id=?";
 
             pstm = conexion.prepareStatement(sql);
 
@@ -171,17 +164,17 @@ public class LibroManagement extends HttpServlet {
             HttpServletResponse resp) // respuesta que genero
             throws ServletException, IOException {
 
-        Libro libro = new Gson().fromJson(req.getReader(), Libro.class);
+        Resenia resenia = new Gson().fromJson(req.getReader(), Resenia.class);
         try {
-            String sql = "UPDATE libro SET titulo=?, editorial=? WHERE id=?";
+            String sql = "UPDATE resenia SET comentario=?, estrellas=? WHERE id=?";
             PreparedStatement pstm = conexion.prepareStatement(sql);
 
-            pstm.setString(1, libro.getTitulo());
-            pstm.setString(2, libro.getEditorial());
-            pstm.setInt(3, libro.getId());
+            pstm.setString(1, resenia.getComentario());
+            pstm.setInt(2, resenia.getEstrellas());
+            pstm.setInt(3, resenia.getId());
 
             if (pstm.executeUpdate() > 0) {
-                resp.getWriter().println("Libro insertado");
+                resp.getWriter().println("Resenia insertado");
             } else {
                 resp.getWriter().println("No se ha podido insertar");
             }

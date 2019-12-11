@@ -10,7 +10,7 @@
 <%@ include file="../header.jsp" %>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>Lista de alumnos</h2></caption>
+            <caption><h2>Lista de usuarios</h2></caption>
             <tr>
                 <th>id</th>
                 <th>username</th>

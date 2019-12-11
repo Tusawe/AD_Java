@@ -1,22 +1,22 @@
 package com.iesvdc.acceso.simplecrud.model;
 
+import java.util.Date;
+
 public class Resenia {
 
     Integer id;
     Integer id_prestamo;
-    Boolean anonimo;
     String comentario;
-    String fecha;
+    Date fecha;
     Integer estrellas;
 
     public Resenia() {
     }
 
-    public Resenia(Integer id, Integer id_prestamo, Boolean anonimo, String comentario, String fecha,
+    public Resenia(Integer id, Integer id_prestamo, String comentario, Date fecha,
             Integer estrellas) {
         this.id = id;
         this.id_prestamo = id_prestamo;
-        this.anonimo = anonimo;
         this.comentario = comentario;
         this.fecha = fecha;
         this.estrellas = estrellas;
@@ -38,14 +38,6 @@ public class Resenia {
         this.id_prestamo = id_prestamo;
     }
 
-    public Boolean getAnonimo() {
-        return anonimo;
-    }
-
-    public void setAnonimo(Boolean anonimo) {
-        this.anonimo = anonimo;
-    }
-
     public String getComentario() {
         return comentario;
     }
@@ -54,11 +46,11 @@ public class Resenia {
         this.comentario = comentario;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
