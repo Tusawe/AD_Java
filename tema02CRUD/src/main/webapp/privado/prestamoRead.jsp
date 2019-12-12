@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <sql:query var="prestamoList" dataSource="jdbc/biblioteca">
-    select id, id_libro, id_usuario, fechaInicio, fechaEntrega, prorroga, estado from prestamo;
+    select pre.id as id , pre.id_libro as id_libro, pre.id_usuario as id_usuario, pre.fechaInicio as fechaInicio, pre.fechaEntrega as fechaEntrega, pre.prorroga as prorroga, pre.estado as estado, lib.titulo as titulo, usu.username as username from prestamo pre, usuario usu, libro lib where pre.id_libro = lib.id and pre.id_usuario = usu.id;
 </sql:query>
 
 
@@ -13,8 +13,8 @@
             <caption><h2>Lista de prestamos</h2></caption>
             <tr>
                 <th>id</th>
-                <th>id_libro</th>
-                <th>id_usuario</th>
+                <th>libro</th>
+                <th>usuario</th>
                 <th>fechaInicio</th>
                 <th>fechaEntrega</th>
                 <th>prorroga</th>
@@ -23,8 +23,8 @@
             <c:forEach var="prestamo" items="${prestamoList.rows}">
                 <tr>
                         <td><c:out value="${prestamo.id}" /></td>
-                    <td><c:out value="${prestamo.id_libro}" /></td>
-                    <td><c:out value="${prestamo.id_usuario}" /></td>
+                    <td><c:out value="${prestamo.titulo}" /></td>
+                    <td><c:out value="${prestamo.username}" /></td>
                     <td><c:out value="${prestamo.fechaInicio}" /></td>
                     <td><c:out value="${prestamo.fechaEntrega}" /></td>
                     <td><c:out value="${prestamo.prorroga}" /></td>

@@ -7,6 +7,10 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+CREATE DATABASE biblioteca;
+
+USE biblioteca;
+
 DROP TABLE IF EXISTS `libro`;
 CREATE TABLE `libro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
